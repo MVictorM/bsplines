@@ -8,6 +8,13 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 resizeCanvas();
 
+jQuery(window).resize(function() {
+    resizeCanvas();
+    if(pontos.length >0) {
+        desenhar();
+    }
+});
+
 //array de pontos de controle
 var pontos = [];
 //variável indica que o ponto está sendo movido
@@ -75,17 +82,32 @@ function desenharPontos() {
     for(var i = 0; i < pontos.length; i++){
         ctx.beginPath();
         ctx.arc(pontos[i].x, pontos[i].y, 4, 0, 2*Math.PI);
-        ctx.fillStyle = "purple";
+        ctx.fillStyle = "rgb(173,216,230)";
         ctx.strokeStyle = "black";
         ctx.stroke();
         ctx.fill();
     }
 }
 
+function ligarPontos(pontos) {
+    for(var z = 0; z < pontos.length - 1; z++){
+        ctx.beginPath();
+        ctx.moveTo(pontos[z].x, pontos[z].y);
+        ctx.lineTo(pontos[z+1].x, pontos[z+1].y);
+        ctx.stroke();
+    }
+}
+
+function desenharRetas() {
+    ctx.strokeStyle = "white";
+    ligarPontos(pontos);
+}
+
 //desenha na tela
 function desenhar(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     desenharPontos();
+    desenharRetas();
 }
 
 desenharPontos();

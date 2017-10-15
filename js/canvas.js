@@ -4,7 +4,7 @@ function resizeCanvas() {
     canvas.height = parseFloat(window.getComputedStyle(canvas).height);
 }
 
-var canvas = document.getElementById('canvas');
+var canvas = jQuery('#canvas')[0];
 var ctx = canvas.getContext('2d');
 resizeCanvas();
 
@@ -19,6 +19,47 @@ jQuery(window).resize(function() {
 var pontos = [];
 //variável indica que o ponto está sendo movido
 var move = false;
+
+var exibirPontos = true;
+var exibirPoligonal = true;
+var exibirCurva = true;
+
+//manipulação dos cliques para exibição do desenho
+jQuery( "#controle" ).click(function() {
+    if(exibirPontos) {
+        jQuery(this).removeClass('btn-success');
+        jQuery(this).addClass('btn-danger');
+    } else {
+        jQuery(this).removeClass('btn-danger');
+        jQuery(this).addClass('btn-success');
+    }
+    exibirPontos = !exibirPontos;
+    desenhar();
+});
+
+jQuery( "#poligonal" ).click(function() {
+    if(exibirPoligonal) {
+        jQuery(this).removeClass('btn-success');
+        jQuery(this).addClass('btn-danger');
+    } else {
+        jQuery(this).removeClass('btn-danger');
+        jQuery(this).addClass('btn-success');
+    }
+    exibirPoligonal = !exibirPoligonal;
+    desenhar();
+});
+
+jQuery( "#curva" ).click(function() {
+    if(exibirCurva) {
+        jQuery(this).removeClass('btn-success');
+        jQuery(this).addClass('btn-danger');
+    } else {
+        jQuery(this).removeClass('btn-danger');
+        jQuery(this).addClass('btn-success');
+    }
+    exibirCurva = !exibirCurva;
+    desenhar();
+});
 
 //cria o ponto se clicar fora de outros pontos e faz o desenho
 canvas.addEventListener("click", function(e) {
@@ -106,8 +147,11 @@ function desenharRetas() {
 //desenha na tela
 function desenhar(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    desenharPontos();
-    desenharRetas();
+    if(exibirPontos) {
+        desenharPontos();
+    }
+    if(exibirPoligonal) {
+        desenharRetas();
+    }
 }
 
-desenharPontos();

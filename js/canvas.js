@@ -139,9 +139,15 @@ function ligarPontos(pontos) {
     }
 }
 
+//Desenha as retas ligando os pontos registrados
 function desenharRetas() {
     ctx.strokeStyle = "white";
     ligarPontos(pontos);
+}
+
+//Desenha a curva b-spline
+function desenharSpline() {
+
 }
 
 //desenha na tela
@@ -152,6 +158,10 @@ function desenhar(){
     }
     if(exibirPoligonal) {
         desenharRetas();
+    }
+
+    if (exibirCurva) {
+        desenharSpline();
     }
 }
 

@@ -116,6 +116,7 @@ canvas.addEventListener('mousemove', function(e) {
 //libera a variável move
 canvas.addEventListener('mouseup', function() {
     move = false;
+    desenhar();
 });
 
 //desenha os pontos de acordo com o array pontos que contem as coordenadas
@@ -136,6 +137,7 @@ function ligarPontos(pontos) {
         ctx.moveTo(pontos[z].x, pontos[z].y);
         ctx.lineTo(pontos[z+1].x, pontos[z+1].y);
         ctx.stroke();
+        ctx.closePath();
     }
 }
 
@@ -147,7 +149,26 @@ function desenharRetas() {
 
 //Desenha a curva b-spline
 function desenharSpline() {
-
+    ctx.strokeStyle = "yellow";
+    if(pontos.length == 0) {
+        return;
+    }
+    var spline = new BSpline(pontos,3);
+    ctx.beginPath();
+    var antx,anty,x,y;
+    antx = spline.calcAt(0)[0];
+    anty = spline.calcAt(0)[1];
+    for(var t = 0;t <= 1;t+=0.001){
+        ctx.moveTo(antx,anty);
+        var interpol = spline.calcAt(t);
+        x = interpol[0];
+        y = interpol[1];
+        ctx.lineTo(x,y);
+        antx = x;
+        anty = y;
+    }
+    ctx.stroke();
+    ctx.closePath();
 }
 
 //desenha na tela
@@ -159,8 +180,7 @@ function desenhar(){
     if(exibirPoligonal) {
         desenharRetas();
     }
-
-    if (exibirCurva) {
+    if (exibirCurva && !move) {
         desenharSpline();
     }
 }

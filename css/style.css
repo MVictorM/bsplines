@@ -7,6 +7,6 @@ html, body, canvas, #contain-canvas {
   background: #444444;
 }
 
-#filtro {
-  margin-left: 4px;
+.filtro {
+  margin-right: 4px;
 }

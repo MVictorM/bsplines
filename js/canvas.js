@@ -61,6 +61,11 @@ jQuery( "#curva" ).click(function() {
     desenhar();
 });
 
+jQuery( "#reset" ).click(function() {
+    pontos = [];
+    desenhar();
+});
+
 //cria o ponto se clicar fora de outros pontos e faz o desenho
 canvas.addEventListener("click", function(e) {
     if(findPoint(e) === false){

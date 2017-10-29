@@ -15,6 +15,9 @@ jQuery(window).resize(function() {
     }
 });
 
+// define a precisão no desenho da reta
+var precisao = 1000;
+
 //array de pontos de controle
 var pontos = [];
 //variável indica que o ponto está sendo movido
@@ -163,7 +166,7 @@ function desenharSpline() {
     var antx,anty,x,y;
     antx = spline.calcAt(0)[0];
     anty = spline.calcAt(0)[1];
-    for(var t = 0;t <= 1;t+=0.001){
+    for(var t = 0;t <= 1;t += (1/precisao)){
         ctx.moveTo(antx,anty);
         var interpol = spline.calcAt(t);
         x = interpol[0];

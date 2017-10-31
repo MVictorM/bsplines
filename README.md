@@ -1,6 +1,5 @@
 # Curva de B-splines Cúbica C²
-  O sistema calcula os pontos de controle de Bézier e desenha a curva corres-
-pondente. A parametrização é pelo comprimento da corda.
+  O sistema calcula os pontos de controle de Bézier e desenha a curva correspondente. A parametrização é pelo comprimento da corda.
 
 ### Uso do sistema
   Clique esquerdo do mouse para criar pontos de controle.

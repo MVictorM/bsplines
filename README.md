@@ -9,3 +9,6 @@
   *Para excluir um ponto, basta clicar duas vezes nele com o botão esquerdo
 
   *Botões no filtro servem para exibir ou esconder os elementos (Por padrão, todos são exibidos)
+
+### Demonstração
+[BSplines](https://mvictorm.github.io/bsplines/)

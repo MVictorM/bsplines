@@ -11,4 +11,4 @@
   *Botões no filtro servem para exibir ou esconder os elementos (Por padrão, todos são exibidos)
 
 ### Demonstração
-[BSplines](https://mvictorm.github.io/bsplines/)
+[BSplines](https://vmmelo.github.io/bsplines/)
